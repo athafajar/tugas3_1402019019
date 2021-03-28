@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Kalkulator</title>
+    <link rel="stylesheet" href="3dCSS.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container col">
+        <div class="header-left">
+        	<h1>3D Kalkulator</h1>
+        	<script type="text/javascript">
+        		var jam = (new Date()).getHours();
+        		var menit = (new Date()).getMinutes();
+        		var detik = (new Date()).getSeconds();
+        		if (jam >= 4 && jam < 10) document.writeln("Selamat Pagi,");
+				if (jam >= 10 && jam < 15) document.writeln("Selamat Siang,");
+				if (jam >= 15 && jam < 18) document.writeln("Selamat Sore,");
+				if (jam >= 18 || jam < 4) document.writeln("Selamat Malam,");
+        		var nama = window.prompt("Masukkan Nama Anda:")
+        		document.writeln(""+nama);
+        	</script>
+   
+        </div>
+        <div class="header-right">
+          <ul class="col">
+            <li>
+              <a href="#silinder">Silinder</a>
+            </li>
+            <li>
+              <a href="#kerucut">Kerucut</a>
+            </li>
+            <li>
+              <a href="#bola">Bola</a>
+            </li>
+          </ul> 
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="articles" id="articles">
+        <div class="article col">
+          <div class="article-img">
+            <img src="img/tabung.jpg" />
+          </div>
+          <div class="article-txt">
+            <h1>Silinder</h1>
+            <h4>Masukkan jari-jari Silinder : <input type="text" id="jari" name="jari"></h4>
+          	<h4>Masukkan tinggi Silinder    : <input type="text" id="tinggi" name="tinggi"></h4>
+          	<input type="button" id="btnHitung" value="Hitung"onclick="hitungLuasSilinder(), volumeSilinder()"><br/>
+          	<h2>Hitung Perhitungan</h2>
+          	<h4>Luas Permukaan : <input type="text" id="luasSilinder" name="luasSilinder">m<sup>2</sup></h4>
+	        <h4>Volume         : <input type="text" id="volSilinder" name="volSilinder">m<sup>3</sup></h4>
+	        <br>
+          </div>
+        </div>
+        <div class="article col article-right">
+          <div class="article-img">
+            <img src="img/kerucut.png" />
+          </div>
+          <div class="article-txt">
+            <h1>Kerucut</h1>
+            <p>
+              <h4>Masukkan jari-jari Kerucut (dalam meter) : <input type="text" id="jariKerucut" name="jariKerucut"></h4>
+              <h4>Masukkan garis pelukis Kerucut (dalam meter) : <input type="text" id="pelukis" name="pelukis"></h4>
+          		<h4>Masukkan tinggi Kerucut (dalam meter) : <input type="text" id="tinggiKerucut" name="tinggiKerucut"></h4>
+          <input type="button" id="btnHitung" value="Hitung"onclick="hitungLuasKerucut(), volumeKerucut()"><br/>
+           <h2>Hitung Perhitungan</h2>
+          <h4>Luas Permukaan : <input type="text" id="luasKerucut" name="luasKerucut">m<sup>2</sup></h4>
+          <h4>Volume         : <input type="text" id="volKerucut" name="volKerucut">m<sup>3</sup></h4>
+            </p>
+          </div>
+        </div>
+        <div class="article col">
+          <div class="article-img">
+            <img src="img/bola.png" />
+          </div>
+          <div class="article-txt">
+            <h1>Bola</h1>
+            <p>
+              <h4>Masukkan jari-jari Bola (dalam meter) : <input type="text" id="jariBola" name="jariBola"></h4>
+              <input type="button" id="btnHitung" value="Hitung"onclick="hitungLuasBola(), volumeBola()"><br/>
+	           <h2>Hitung Perhitungan</h2>
+	          <h4>Luas Permukaan : <input type="text" id="luasBola" name="luasBola">m<sup>2</sup></h4>
+	          <h4>Volume         : <input type="text" id="volBola" name="volBola">m<sup>3</sup></h4>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-top"><h1>Developed</h1></div>
+      <div class="footer-bottom">
+        <h3>By Atha Fajar Maulana Makka</h3>
+      </div>
+    </footer>
+
+    <script>
+	    function hitungLuasSilinder(){
+	        var jari=document.getElementById("jari").value;
+	        var tinggi=document.getElementById("tinggi").value;
+	        var hasil = 2*Math.PI * jari * jari+2*Math.PI*jari*tinggi
+	      	document.getElementById("luasSilinder").value = hasil.toFixed(2);
+	    }
+
+	    function volumeSilinder(){
+	      	var jari=document.getElementById("jari").value;
+	        var tinggi=document.getElementById("tinggi").value;
+	        var hasil = Math.PI * (jari * jari) * tinggi; 
+	      	document.getElementById("volSilinder").value = hasil.toFixed(2);
+	    }
+
+	    function hitungLuasKerucut() {
+	      	var jari=document.getElementById("jariKerucut").value;
+	      	var pelukis=document.getElementById("pelukis").value;
+	        var tinggi=document.getElementById("tinggiKerucut").value;
+	        var hasil = Math.PI * jari * jari + Math.PI * jari * pelukis;
+	      	document.getElementById("luasKerucut").value = hasil.toFixed(2); 
+	    }
+
+	    function volumeKerucut() {
+	      	var jari=document.getElementById("jariKerucut").value;
+	        var tinggi=document.getElementById("tinggiKerucut").value;
+	        var hasil = (1/3) * Math.PI * (jari * jari) * tinggi;
+	      	document.getElementById("volKerucut").value = hasil.toFixed(2); 
+	    }
+
+	    function hitungLuasBola() {
+	    	var jari = document.getElementById("jariBola").value;
+	    	var hasil = 4 * Math.PI * jari * jari;
+	    	document.getElementById("luasBola").value = hasil.toFixed(2);
+	    }
+
+	    function volumeBola() {
+	    	var jari = document.getElementById("jariBola").value;
+	    	var hasil = 4/3 * Math.PI * jari * jari * jari;
+	    	document.getElementById("volBola").value = hasil.toFixed(2);
+	    }
+    </script>
+  </body>
+</html>
